@@ -4,7 +4,7 @@
   "description": "learning vue",
   "main": "index.js",
   "scripts": {
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d vue"
   },
   "repository": {
     "type": "git",
