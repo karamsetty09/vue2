@@ -1,0 +1,22 @@
+{
+  "name": "vue2",
+  "version": "1.0.0",
+  "description": "learning vue",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karamsetty09/vue2.git"
+  },
+  "author": "venkata",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karamsetty09/vue2/issues"
+  },
+  "homepage": "https://github.com/karamsetty09/vue2",
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
