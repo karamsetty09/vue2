@@ -7,13 +7,21 @@
     <title>vue.js App</title>
 </head>
 <body>
-    <h1>Hello Vue</h1>
-    
+       
     <!-- Assigning vue element to div -->
     <div id="root">   
+        <h4>Data Binding and displaying of user Input:</h4>
         <input type="text" id="input" v-model="message">
-
         <p>The value of the input is: {{ message }}. </p>
+
+        <h4>Display of array:</h4>
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
+        <input id="input" type="text" v-model="newName" >
+        <!-- v-on: === @ and v-on:keyUp="addName" -> used for differnt user actions to input.-->
+        <button @click="addName">Add Name</button>
+
     </div>
     
 
@@ -24,12 +32,23 @@
     
     <script>
         // creating a new vue Instance.
-        new Vue({
+        var app = new Vue({
             el: '#root',                // bind it to the element.
             data: {                     // create data for the application.
-            message: 'Hello vue'
-            }
-        })
+            message: 'Hello vue',        // Data binding used ar line 14 and 15
+            names: ['Chandra Mouli Karamsetty', 'Sarala Karamsetty', 'Raj Dheige', 'Dharshana Prabath'], // array list for vue 
+            newName: ''                 // Variable to hold user Input at line 21
+            },
+
+            methods:{
+                addName(){
+                    alert('adding name to above array');
+                    this.names.push(this.newName);
+                }
+            },
+        });
+
+        
 
     </script>
 </body>
