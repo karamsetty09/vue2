@@ -42,47 +42,22 @@
 
 
         <hr></hr>
-        <h4>Data Binding and displaying of user Input:</h4>
-        <input type="text" v-model="message">
-        <p>The value of the input is: {{ message }}. </p>
+        <databinding></databinding>
+        <hr></hr>
+        
+        <array></array>
 
         <hr></hr>
         
-        <h4>Display of array:</h4>
-        <ul>
-            <li v-for="name in names" v-text="name"></li>
-        </ul>
-        <input id="input" type="text" v-model="newName" >
-        <!-- v-on: === @ and v-on:keyUp="addName" -> used for differnt user actions to input.-->
-        <button @click="addName">Add Name</button>
-
-        <hr></hr>
+        <buttons></buttons>
         
-        <!-- we can remove v-bind in below button -->
-        <button v-bind:title="title">Hover Over Me</button>
-        <!-- On click color change of buttons -->
-        <button :class="{ 'is-loading': isLoading }" @click="toogleClass">Click Will change button color</button>
-
         <hr></hr>
 
-        <!-- Display of Date -->
-        <h3 v-text="new Date()"></h3>
-        <!-- splitting and reversing message: It's not good practice -> Make use of computed properties of vue instance. -->
-        <h2>  Using Computed Property of vue.js  </h2>
-        <h3>  Correct Way - Using vue's computed property: {{reversedMessage}}  </h3>
-        <h3>  Wronge Way - direct way: {{message.split(' ').reverse().join(' ') }}  </h3> 
+        <datecomputed></datecomputed>
        
         <hr></hr>
 
-        <h1 :class="{ 'color-orange': true }"><center>Working with collections</center></h1>
-        <ul>
-            <h3 :class="{'color-blue': true}">Tasks Completed:</h3>
-            <li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
-            <h3 :class="{'color-red': true}">Tasks InComplete:</h3>
-            <li v-for="task in tasks" v-if="!task.completed" v-text="task.description"></li>
-            <h3 :class="{'color-red': true}">Another way of InComplete tasks using computed of vue.js</h3>
-            <li v-for="task in incompleteTasks" v-text="task.description"></li>
-        </ul>
+        <logictasks></logictasks>
 
         <hr></hr>
 
@@ -90,62 +65,12 @@
             Components
         </h1>
         <task>Sandeep</task>
-        <databinding></databinding>
-        <!-- <task>Hurray</task>
-        <heading></heading> -->
         
     </div>
     
-
-
-
     <!-- Always CDN above the new vue Instance -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     
-    <!-- <script>
-        // creating a new vue Instance.
-        var app = new Vue({
-            el: '#root',                // bind it to the element.
-
-            data: {                     // create data for the application.
-            message: 'Hello vue',        // Data binding used ar line 14 and 15
-            names: ['Chandra Mouli Karamsetty', 'Sarala Karamsetty', 'Raj Dheige', 'Dharshana Prabath'], // array list for vue 
-            newName: '',                 // Variable to hold user Input at line 21
-            title: "I am the title of the Hover button.", // title for the hover button.
-            className: 'color-blue',       // using class to call color style.
-            isLoading: false,             // setting falsy for botton color.
-            tasks:[                         // Collections for display and play
-                {description: 'Learning Vue.js', completed: false},
-                {description: 'Learning HTML/CSS', completed: true},
-                {description: 'Learning Laravel', completed: false},
-                {description: 'Learning php', completed: true},
-                {description: 'Learning oops', completed: true},
-            ]
-            },
-
-            methods:{
-                addName(){                                  // Method to insert new Name.
-                    alert('adding name to above array');
-                    this.names.push(this.newName);
-                },
-                toogleClass(){                              // Method to load color on click.
-                    this.isLoading = true;
-                },
-            },
-
-            computed: {
-                reversedMessage(){
-                    return this.message.split(' ').reverse().join(' ');
-                },
-                incompleteTasks(){
-                    return this.tasks.filter(task=> ! task.completed);
-                }
-            }
-        });
-
-        
-
-    </script> -->
     <script src="main.js"></script>
 </body>
 </html>
