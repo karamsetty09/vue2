@@ -7,6 +7,7 @@
     <title>vue.js App</title>
     <style type="text/css">
         .color-blue {color:green;}
+        .color-orange {color:indigo;}
         .is-loading { background: indianred;}    
     </style>
 </head>
@@ -44,7 +45,7 @@
         <hr></hr>
 
         <!-- Display of Date -->
-        <h1 v-text="new Date()"></h1>
+        <h3 v-text="new Date()"></h3>
         <!-- splitting and reversing message: It's not good practice -> Make use of computed properties of vue instance. -->
         <h2>Using Computed Property of vue.js</h2>
         <h3>  Correct Way - Using vue's computed property: {{reversedMessage}}  </h3>
@@ -52,7 +53,16 @@
        
         <hr></hr>
 
-        
+        <h1 :class="{ 'color-orange': true }"><center>Working with collections</center></h1>
+        <ul>
+            <h3>Tasks Completed:</h3>
+            <li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
+            <h3>Tasks InComplete:</h3>
+            <li v-for="task in tasks" v-if="!task.completed" v-text="task.description"></li>
+            <h3>Another way of InComplete tasks using computed of vue.js</h3>
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+        </ul>
+
     </div>
     
 
@@ -73,7 +83,14 @@
             title: "I am the title of the Hover button.", // title for the hover button.
             className: 'color-blue',       // using class to call color style.
             isLoading: false,             // setting falsy for botton color.
-        },
+            tasks:[                         // Collections for display and play
+                {description: 'Learning Vue.js', completed: false},
+                {description: 'Learning HTML/CSS', completed: true},
+                {description: 'Learning Laravel', completed: false},
+                {description: 'Learning php', completed: true},
+                {description: 'Learning oops', completed: true},
+            ]
+            },
 
             methods:{
                 addName(){                                  // Method to insert new Name.
@@ -88,6 +105,9 @@
             computed: {
                 reversedMessage(){
                     return this.message.split(' ').reverse().join(' ');
+                },
+                incompleteTasks(){
+                    return this.tasks.filter(task=> ! task.completed);
                 }
             }
         });
