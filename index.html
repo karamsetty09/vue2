@@ -23,7 +23,9 @@
         <h4>Data Binding and displaying of user Input:</h4>
         <input type="text" id="input" v-model="message">
         <p>The value of the input is: {{ message }}. </p>
+
         <hr></hr>
+        
         <h4>Display of array:</h4>
         <ul>
             <li v-for="name in names" v-text="name"></li>
@@ -33,11 +35,24 @@
         <button @click="addName">Add Name</button>
 
         <hr></hr>
+        
         <!-- we can remove v-bind in below button -->
         <button v-bind:title="title">Hover Over Me</button>
         <!-- On click color change of buttons -->
         <button :class="{ 'is-loading': isLoading }" @click="toogleClass">Click Will change button color</button>
 
+        <hr></hr>
+
+        <!-- Display of Date -->
+        <h1 v-text="new Date()"></h1>
+        <!-- splitting and reversing message: It's not good practice -> Make use of computed properties of vue instance. -->
+        <h2>Using Computed Property of vue.js</h2>
+        <h3>  Correct Way - Using vue's computed property: {{reversedMessage}}  </h3>
+        <h3>  Wronge Way - direct way: {{message.split(' ').reverse().join(' ') }}</h3> 
+       
+        <hr></hr>
+
+        
     </div>
     
 
@@ -50,7 +65,7 @@
         // creating a new vue Instance.
         var app = new Vue({
             el: '#root',                // bind it to the element.
-            
+
             data: {                     // create data for the application.
             message: 'Hello vue',        // Data binding used ar line 14 and 15
             names: ['Chandra Mouli Karamsetty', 'Sarala Karamsetty', 'Raj Dheige', 'Dharshana Prabath'], // array list for vue 
@@ -69,6 +84,12 @@
                     this.isLoading = true;
                 },
             },
+
+            computed: {
+                reversedMessage(){
+                    return this.message.split(' ').reverse().join(' ');
+                }
+            }
         });
 
         
