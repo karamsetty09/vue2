@@ -5,15 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vue.js App</title>
+    <style type="text/css">
+        .color-blue {color:green;}
+        .is-loading { background: indianred;}    
+    </style>
 </head>
 <body>
        
     <!-- Assigning vue element to div -->
-    <div id="root">   
+    <div id="root">  
+        
+        <!-- coloring using className -->
+        <h1 :class="className"><center>Welcome to Vue.js</center></h1>
+        
+        <hr></hr>
+        
         <h4>Data Binding and displaying of user Input:</h4>
         <input type="text" id="input" v-model="message">
         <p>The value of the input is: {{ message }}. </p>
-
+        <hr></hr>
         <h4>Display of array:</h4>
         <ul>
             <li v-for="name in names" v-text="name"></li>
@@ -21,6 +31,12 @@
         <input id="input" type="text" v-model="newName" >
         <!-- v-on: === @ and v-on:keyUp="addName" -> used for differnt user actions to input.-->
         <button @click="addName">Add Name</button>
+
+        <hr></hr>
+        <!-- we can remove v-bind in below button -->
+        <button v-bind:title="title">Hover Over Me</button>
+        <!-- On click color change of buttons -->
+        <button :class="{ 'is-loading': isLoading }" @click="toogleClass">Click Will change button color</button>
 
     </div>
     
@@ -34,17 +50,24 @@
         // creating a new vue Instance.
         var app = new Vue({
             el: '#root',                // bind it to the element.
+            
             data: {                     // create data for the application.
             message: 'Hello vue',        // Data binding used ar line 14 and 15
             names: ['Chandra Mouli Karamsetty', 'Sarala Karamsetty', 'Raj Dheige', 'Dharshana Prabath'], // array list for vue 
-            newName: ''                 // Variable to hold user Input at line 21
-            },
+            newName: '',                 // Variable to hold user Input at line 21
+            title: "I am the title of the Hover button.", // title for the hover button.
+            className: 'color-blue',       // using class to call color style.
+            isLoading: false,             // setting falsy for botton color.
+        },
 
             methods:{
-                addName(){
+                addName(){                                  // Method to insert new Name.
                     alert('adding name to above array');
                     this.names.push(this.newName);
-                }
+                },
+                toogleClass(){                              // Method to load color on click.
+                    this.isLoading = true;
+                },
             },
         });
 
