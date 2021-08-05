@@ -3,10 +3,10 @@
 Vue.component('message',{
     props: ['title', 'body'],
     template:`
-    <article class="message">
+    <article class="message" v-show="isVisible">
             <div class="message-header">
               {{ title }}
-              <button class="delete" aria-label="delete"></button>
+              <button class="delete" aria-label="delete" @click="hideModal()"></button>
             </div>
             <div class="message-body">
               {{ body }}
@@ -15,11 +15,13 @@ Vue.component('message',{
     `,
     data(){
         return{
-
+            isVisible : true,
         }
     },
     methods:{
-
+        hideModal(){
+            this.isVisible = false;
+        }
     }
 });
 
