@@ -4,12 +4,21 @@ Vue.component('task', {
     template: '<li><slot></slot></li>',
 });
 
-Vue.component('heading', {
-    template: '<h1>{{name}}</h1>',
-
+Vue.component('top', {
+    template: `
+    <!-- coloring using className -->
+    <div>
+    <h1 :class="className">
+    <center>
+    {{message}}
+    </center>
+    </h1>
+    </div>
+    `,
     data(){
         return{
-            name: 'Venkata Sandeep kumar. Karamsetty'
+            message: 'Welcome to Vue.js',
+            className: 'color-blue',
         };
     }
 });
@@ -140,7 +149,6 @@ Vue.component('logictasks',{
 new Vue({
     el: '#root',
     data: {    
-        className: 'color-blue',       // Already in component but error is rising, learn and confirm regarding this.             
         }
 });
 
