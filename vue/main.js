@@ -171,9 +171,36 @@ Vue.component('logictasks',{
         }
     },
 });
+
+Vue.component('modal',{
+    template: `
+    <div class="modal is-active">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+              <slot>
+              </slot>
+            </div>
+            <!-- Any other Bulma elements you want -->
+          </div>
+          <!-- Comminucation to showModal for making false  -->
+          <button class="modal-close is-large" @click="$emit('close')" aria-label="close"></button>
+        </div>
+    `,
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+
+    }
+}); 
+
 new Vue({
     el: '#root',
-    data: {    
+    data: {   
+        showModal: false // Used for communication between two components
         }
 });
 

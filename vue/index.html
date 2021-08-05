@@ -30,6 +30,14 @@
         </message>
         
         <hr></hr>
+        
+        <modal v-show="showModal" @close="showModal = false">
+          <p> We Insert any text here:</p>
+        </modal>
+        
+        <button @click="showModal = true">show Modal</button>
+
+        <hr></hr>
 
         <databinding></databinding>
         
