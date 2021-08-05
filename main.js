@@ -248,11 +248,28 @@ Vue.component('tab',{
     }
 });
 
+Vue.component('coupon',{
+    template:`
+    <input placeholder="Enter your coupon code" @blur="onCouponApplied">
+    `,
+    methods:{
+        onCouponApplied(){
+            this.$emit('applied');
+        }
+    }
+});
+
 new Vue({
     el: '#root',
     data: {   
-        showModal: false // Used for communication between two components
+        showModal: false, // Used for communication between two components
+        couponApplied: false
+    },
+    methods:{
+        onCouponApplied(){
+            this.couponApplied = true;
         }
+    }
 });
 
 
