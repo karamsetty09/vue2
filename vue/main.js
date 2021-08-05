@@ -1,5 +1,28 @@
 // In template wverything must be wrapped
 
+Vue.component('message',{
+    props: ['title', 'body'],
+    template:`
+    <article class="message">
+            <div class="message-header">
+              {{ title }}
+              <button class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">
+              {{ body }}
+            </div>
+    </article>
+    `,
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+
+    }
+});
+
 Vue.component('task', {
     template: '<li><slot></slot></li>',
 });
