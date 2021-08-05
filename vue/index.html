@@ -52,6 +52,15 @@
         </tabs>
 
         <hr></hr>
+
+        <h1> Coupon Applied by using coponent communication:</h1>
+        
+        <coupon @applied="onCouponApplied"></coupon>
+
+        <h1 v-if="couponApplied"> You used a coupon!</h1>
+
+        <hr></hr>
+        
         <databinding></databinding>
         
         <hr></hr>
