@@ -37,6 +37,18 @@
         
         <button @click="showModal = true">show Modal</button>
 
+        <model v-show="showModel" @close="showModel = false">
+            <template slot="header">My title</template>
+            Content from index.HTML 
+            <template slot="footer">
+              <button class="button is-success">Save changes</button>
+              <button class="button" @click="showModel = false">Cancel</button>
+            </template>
+        </model> 
+        
+        <button @click="showModel = true">Controlling Model</button>
+        
+
         <hr></hr>
 
         <tabs>
@@ -87,7 +99,7 @@
         <task>Sandeep</task>
         
     </div>
-    
+
     
     <!-- Always CDN above the new vue Instance -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>

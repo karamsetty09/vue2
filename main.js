@@ -263,12 +263,45 @@ Vue.component('coupon',{
     }
 });
 
+// How to control content in modal for display.
 
+Vue.component('model',{
+    template:`
+    
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">
+                    <slot name="header"></slot>
+                </p>
+                <button class="delete" @click="$emit('close')" aria-label="close"></button>
+            </header>
+
+            <section class="modal-card-body">
+                <slot>
+                    Default content if data didn't passed.
+                </slot>
+
+            </section>
+
+            <footer class="modal-card-foot">
+                <slot name="footer">
+                <button class="button is-success">Okay</button>
+                </slot>
+            </footer>
+        </div>
+    </div>
+    
+    `
+});
 
 new Vue({
     el: '#root',
     data: {   
         showModal: false, // Used for communication between two components
+        showModel: false,
         couponApplied: false
     },
     methods:{
