@@ -48,9 +48,19 @@
         
         <button @click="showModel = true">Controlling Model</button>
         
-
         <hr></hr>
 
+        <h1>Sample Single-use Component:</h1>
+        <progress-view inline-template>
+          <div>  
+            <h1> Your Progress in vue.js course: {{ completionRate }}% </h1>
+            <p><button @click="completionRate +=10">Increase Completion Rate.</button></p>
+          </div>
+        </progress-view>
+       
+
+
+        <hr></hr>
         <tabs>
             <tab name="About me" :selected="true">
               <h1>Here is the content for About us</h1>

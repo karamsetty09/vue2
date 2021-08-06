@@ -297,6 +297,15 @@ Vue.component('model',{
     `
 });
 
+// one off oneline component example
+// component with no template.
+Vue.component('progress-view',{
+    data(){
+        return { completionRate : 50 };
+    }
+});
+
+
 new Vue({
     el: '#root',
     data: {   
