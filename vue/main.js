@@ -248,6 +248,9 @@ Vue.component('tab',{
     }
 });
 
+// decoupling from parent child releationship
+window.Event = new Vue();
+
 Vue.component('coupon',{
     template:`
     <input placeholder="Enter your coupon code" @blur="onCouponApplied">
@@ -255,6 +258,7 @@ Vue.component('coupon',{
     methods:{
         onCouponApplied(){
             this.$emit('applied');
+            Event.$emit('applied');
         }
     }
 });
@@ -269,6 +273,9 @@ new Vue({
         onCouponApplied(){
             this.couponApplied = true;
         }
+    },
+    created(){
+        Event.$on('applied', () => alert('Handling it!'));
     }
 });
 
