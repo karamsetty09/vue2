@@ -305,13 +305,48 @@ Vue.component('progress-view',{
     }
 });
 
+// Trying forms for display.
+
+Vue.component('forms',{
+    template:`
+    <div>
+    <h1>forms</h1>
+    </div>
+    `,
+    data(){
+        return{
+            title: "I am the title of the Hover button.", // title for the hover button.
+            isLoading: false,             // setting falsy for botton color.
+        }
+    },
+    methods:{
+        toogleClass(){                              // Method to load color on click.
+            this.isLoading = true;
+        }
+    },
+})
 
 new Vue({
     el: '#root',
     data: {   
         showModal: false, // Used for communication between two components
         showModel: false,
-        couponApplied: false
+        couponApplied: false,
+        product: 'Socks',
+        image: './assets/vmSocks-green-onWhite.jpeg',
+        link: 'https://v3.vuejs.org/',
+        inventory: 9,
+        details: ["80% cotton", "20% polyster", "Gender-neutral"],
+        variants: [
+            {
+                variantId: 2234,
+                variantColor: "green"
+            },
+            {
+                varaintId: 2235,
+                variantColor: "blue"
+            }
+        ]
     },
     methods:{
         onCouponApplied(){
@@ -322,6 +357,8 @@ new Vue({
         Event.$on('applied', () => alert('Handling it!'));
     }
 });
+
+
 
 
 
