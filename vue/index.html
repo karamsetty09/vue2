@@ -13,101 +13,133 @@
     </style>
     <!-- CDN of Bluma UI design link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-       
+<body>    
     <!-- Assigning vue element to div -->
     <div id="root" class="container">  
-        
-        <hr></hr>
+    <div class="nav-bar"></div>
+    <hr></hr>
 
-        <top></top>
-        
-        <hr></hr>
-        
-        <message title="Hello World" body="Lorem ipsum dolar sit amet">
+    <top></top>
+    <!-- E-commerce Website -->
+    <hr></hr>
+    
+    <div class="product">
+        <div class="product-image">
+            <img v-bind:src="image">
+        </div>
 
-        </message>
+        <div class="product-info">
+            <h1>{{product}}</h1>
+            <hr></hr>
+            <a :href="link" target="_blank">href tab in vue.js</a>
+            <p v-if="inventory > 10">In Stock</p>
+            <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out</p>
+            <p v-else>Out of Stock</p>
+            <li v-for="detail in details">{{detail}}</li>
+            <hr></hr>
+
+            <div v-for="variant in variants" :key="variant.variantId">
+                <p>{{variant.variantColor}}</p>
+            </div>
+
+        </div>
+
         
-        <hr></hr>
-        
-        <modal v-show="showModal" @close="showModal = false">
-          <p> We Insert any text here:</p>
-        </modal>
-        
-        <button @click="showModal = true">show Modal</button>
+    </div>
 
-        <model v-show="showModel" @close="showModel = false">
-            <template slot="header">My title</template>
-            Content from index.HTML 
-            <template slot="footer">
-              <button class="button is-success">Save changes</button>
-              <button class="button" @click="showModel = false">Cancel</button>
-            </template>
-        </model> 
-        
-        <button @click="showModel = true">Controlling Model</button>
-        
-        <hr></hr>
+    
 
-        <h1>Sample Single-use Component:</h1>
-        <progress-view inline-template>
-          <div>  
-            <h1> Your Progress in vue.js course: {{ completionRate }}% </h1>
-            <p><button @click="completionRate +=10">Increase Completion Rate.</button></p>
-          </div>
-        </progress-view>
-       
+    <hr></hr>
+    <!-- End of E-commerce Website -->
+    <forms></forms>
+
+    <hr></hr>
+
+    <message title="Hello World" body="Lorem ipsum dolar sit amet">
+
+    </message>
+
+    <hr></hr>
+
+    <modal v-show="showModal" @close="showModal = false">
+    <p> We Insert any text here:</p>
+    </modal>
+
+    <button @click="showModal = true">show Modal</button>
+
+    <model v-show="showModel" @close="showModel = false">
+    <template slot="header">My title</template>
+    Content from index.HTML 
+    <template slot="footer">
+    <button class="button is-success">Save changes</button>
+    <button class="button" @click="showModel = false">Cancel</button>
+    </template>
+    </model> 
+
+    <button @click="showModel = true">Controlling Model</button>
+
+    <hr></hr>
+
+    <h1>Sample Single-use Component:</h1>
+    <progress-view inline-template>
+    <div>  
+    <h1> Your Progress in vue.js course: {{ completionRate }}% </h1>
+    <p><button @click="completionRate +=10">Increase Completion Rate.</button></p>
+    </div>
+    </progress-view>
 
 
-        <hr></hr>
-        <tabs>
-            <tab name="About me" :selected="true">
-              <h1>Here is the content for About us</h1>
-            </tab>
-            <tab name="About my goal">
-              <h1>Here is the content for About my goal</h1>
-            </tab>
-            <tab name="About my vision">
-              <h1>Here is the content for About my vision</h1>
-            </tab>
-        </tabs>
 
-        <hr></hr>
+    <hr></hr>
+    <tabs>
+    <tab name="About me" :selected="true">
+    <h1>Here is the content for About us</h1>
+    </tab>
+    <tab name="About my goal">
+    <h1>Here is the content for About my goal</h1>
+    </tab>
+    <tab name="About my vision">
+    <h1>Here is the content for About my vision</h1>
+    </tab>
+    </tabs>
 
-        <h1> Coupon Applied by using coponent communication:</h1>
-        
-        <coupon @applied="onCouponApplied"></coupon>
+    <hr></hr>
 
-        <h1 v-if="couponApplied"> You used a coupon!</h1>
+    <h1> Coupon Applied by using coponent communication:</h1>
 
-        <hr></hr>
-        
-        <databinding></databinding>
-        
-        <hr></hr>
-        
-        <array></array>
+    <coupon @applied="onCouponApplied"></coupon>
 
-        <hr></hr>
-        
-        <buttons></buttons>
-        
-        <hr></hr>
+    <h1 v-if="couponApplied"> You used a coupon!</h1>
 
-        <datecomputed></datecomputed>
-       
-        <hr></hr>
+    <hr></hr>
 
-        <logictasks></logictasks>
+    <databinding></databinding>
 
-        <hr></hr>
+    <hr></hr>
 
-        <h1>
-            Components
-        </h1>
-        <task>Sandeep</task>
-        
+    <array></array>
+
+    <hr></hr>
+
+    <buttons></buttons>
+
+    <hr></hr>
+
+    <datecomputed></datecomputed>
+
+    <hr></hr>
+
+    <logictasks></logictasks>
+
+    <hr></hr>
+
+    <h1>
+    Components
+    </h1>
+    <task>Sandeep</task>
+
     </div>
 
     
