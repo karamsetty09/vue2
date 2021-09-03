@@ -340,17 +340,29 @@ new Vue({
         variants: [
             {
                 variantId: 2234,
-                variantColor: "green"
+                variantColor: "green",
+                variantImage: './assets/vmSocks-green-onWhite.jpeg'
             },
             {
                 varaintId: 2235,
-                variantColor: "blue"
+                variantColor: "blue",
+                variantImage: './assets/vmSocks-blue-onWhite.jpeg'
             }
-        ]
+        ],
+        cart: 0
     },
     methods:{
         onCouponApplied(){
             this.couponApplied = true;
+        },
+        addToCart(){
+            this.cart +=1;
+        },
+        reoveFromCart(){
+            this.cart -=1;
+        },
+        updateProduct: function(variantImage){
+            this.image = variantImage
         }
     },
     created(){
