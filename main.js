@@ -333,6 +333,7 @@ new Vue({
         showModel: false,
         couponApplied: false,
         product: 'Socks',
+        inStock: true,
         image: './assets/vmSocks-green-onWhite.jpeg',
         link: 'https://v3.vuejs.org/',
         inventory: 9,
@@ -358,7 +359,7 @@ new Vue({
         addToCart(){
             this.cart +=1;
         },
-        reoveFromCart(){
+        removeFromCart(){
             this.cart -=1;
         },
         updateProduct: function(variantImage){
