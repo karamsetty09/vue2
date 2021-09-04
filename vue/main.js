@@ -332,6 +332,7 @@ new Vue({
         showModal: false, // Used for communication between two components
         showModel: false,
         couponApplied: false,
+        brand: 'Computed brand',
         product: 'Socks',
         inStock: true,
         image: './assets/vmSocks-green-onWhite.jpeg',
@@ -364,6 +365,14 @@ new Vue({
         },
         updateProduct: function(variantImage){
             this.image = variantImage
+        }
+    },
+    computed:{
+        title(){
+            return this.brand + ' ' + this.product;
+        },
+        inCart(){
+            return this.cart==0 ? false : true ;
         }
     },
     created(){

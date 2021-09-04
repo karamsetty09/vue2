@@ -31,7 +31,7 @@
         </div>
 
         <div class="product-info">
-            <h1>{{product}}</h1>
+            <h1>{{title}}</h1>
             <hr></hr>
             <a :href="link" target="_blank">href tab in vue.js</a>
             <p v-if="inventory > 10">In Stock</p>
@@ -54,7 +54,10 @@
             Add to Cart
             </button>
             
-            <button v-on:click="removeFromCart">
+            <button v-on:click="removeFromCart"
+            :disabled="!inCart"
+            :class="{ disabledButton: !inCart }"
+            >
             Remove Item
             </button>
 
