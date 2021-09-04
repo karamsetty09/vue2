@@ -332,9 +332,11 @@ new Vue({
         showModal: false, // Used for communication between two components
         showModel: false,
         couponApplied: false,
+        brand: 'Computed brand',
+        selectedVariant: 0, // Used for updating color image.
         product: 'Socks',
-        inStock: true,
-        image: './assets/vmSocks-green-onWhite.jpeg',
+        // inStock: true,
+        // image: './assets/vmSocks-green-onWhite.jpeg',
         link: 'https://v3.vuejs.org/',
         inventory: 9,
         details: ["80% cotton", "20% polyster", "Gender-neutral"],
@@ -342,12 +344,14 @@ new Vue({
             {
                 variantId: 2234,
                 variantColor: "green",
-                variantImage: './assets/vmSocks-green-onWhite.jpeg'
+                variantImage: './assets/vmSocks-green-onWhite.jpeg',
+                variantQuantity: 100
             },
             {
                 varaintId: 2235,
                 variantColor: "blue",
-                variantImage: './assets/vmSocks-blue-onWhite.jpeg'
+                variantImage: './assets/vmSocks-blue-onWhite.jpeg',
+                variantQuantity: 0
             }
         ],
         cart: 0
@@ -362,8 +366,23 @@ new Vue({
         removeFromCart(){
             this.cart -=1;
         },
-        updateProduct: function(variantImage){
-            this.image = variantImage
+        updateProduct(index){
+            this.selectedVariant = index
+            
+        }
+    },
+    computed:{
+        image(){
+            return this.variants[this.selectedVariant].variantImage
+        },
+        inStock(){
+            return this.variants[this.selectedVariant].variantQuantity
+        },
+        title(){
+            return this.brand + ' ' + this.product;
+        },
+        inCart(){
+            return this.cart==0 ? false : true ;
         }
     },
     created(){
