@@ -36,7 +36,7 @@
             <a :href="link" target="_blank">href tab in vue.js</a>
             <p v-if="inventory > 10">In Stock</p>
             <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out</p>
-            <p v-else>Out of Stock</p>
+            <p v-else :class="{ outOfStock: !inStock }">Out of Stock</p>
             <li v-for="detail in details">{{detail}}</li>
             <hr></hr>
 
@@ -48,8 +48,15 @@
                 
             </div>
 
-            <button v-on:click="addToCart">Add to Cart</button>
-            <button v-on:click="reoveFromCart">Remove Item</button>
+            <button v-on:click="addToCart"
+            :disabled="!inStock"
+            :class="{ disabledButton: !inStock }">
+            Add to Cart
+            </button>
+            
+            <button v-on:click="removeFromCart">
+            Remove Item
+            </button>
 
             <div class="cart">
                 <p>Cart({{cart}})</p>
@@ -59,8 +66,6 @@
 
         
     </div>
-
-    
 
     <hr></hr>
     <!-- End of E-commerce Website -->
