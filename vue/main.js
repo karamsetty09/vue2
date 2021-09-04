@@ -373,9 +373,6 @@ Vue.component('product',{
             Remove Item
             </button>
 
-            <div class="cart">
-                <p>Cart({{cart}})</p>
-            </div>
         </div> 
     </div>
    `,
@@ -403,7 +400,6 @@ Vue.component('product',{
                 variantQuantity: 0
             }
         ],
-        cart: 0
        }
    },
    methods:{
@@ -411,10 +407,10 @@ Vue.component('product',{
             this.couponApplied = true;
         },
         addToCart(){
-            this.cart +=1;
+            this.$emit('add-to-cart')
         },
         removeFromCart(){
-            this.cart -=1;
+            this.$emit('remove-at-cart')
         },
         updateProduct(index){
             this.selectedVariant = index
@@ -451,10 +447,17 @@ new Vue({
         showModel: false,
         couponApplied: false,  
         premium: true,
+        cart: 0
     },
     methods:{
         onCouponApplied(){
             this.couponApplied = true;
+        },
+        updateCart(){
+            this.cart += 1
+        },
+        removeCart(){
+            this.cart -= 1;
         }
     },
     created(){
