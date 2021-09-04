@@ -327,6 +327,12 @@ Vue.component('forms',{
 })
 
 Vue.component('product',{
+   props:{
+        premium:{
+            type: Boolean,
+            required: true
+        }
+   },
    template: `
    <div class="product">
         <div class="product-image">
@@ -339,7 +345,11 @@ Vue.component('product',{
             <a :href="link" target="_blank">href tab in vue.js</a>
             <p v-if="inStock">In Stock</p>
             <p v-else :class="{ outOfStock: !inStock }">Out of Stock</p>
+            <p> User is Premium: {{premium}}</p>
+            <p>Shipping: {{shipping}}</p>
+            <ul>
             <li v-for="detail in details">{{detail}}</li>
+            </ul>
             <hr></hr>
 
             <div v-for="(variant, index) in variants" 
@@ -423,6 +433,12 @@ Vue.component('product',{
         },
         inCart(){
             return this.cart==0 ? false : true ;
+        },
+        shipping(){
+            if(this.premium){
+                return "Free"
+            }
+            return 2.99
         }
     }
 
@@ -434,6 +450,7 @@ new Vue({
         showModal: false, // Used for communication between two components
         showModel: false,
         couponApplied: false,  
+        premium: true,
     },
     methods:{
         onCouponApplied(){
