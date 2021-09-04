@@ -24,8 +24,13 @@
     <top></top>
     <!-- E-commerce Website -->
     <hr></hr>
-    
-    <product></product>
+    <div class="cart">
+        <p>Cart({{cart}})</p>
+    </div>
+    <product :premium="premium" 
+    @add-to-cart="updateCart"
+    @remove-at-cart="removeCart"
+    ></product>
 
     <hr></hr>
     <!-- End of E-commerce Website -->
