@@ -326,12 +326,51 @@ Vue.component('forms',{
     },
 })
 
-new Vue({
-    el: '#root',
-    data: {   
-        showModal: false, // Used for communication between two components
-        showModel: false,
-        couponApplied: false,
+Vue.component('product',{
+   template: `
+   <div class="product">
+        <div class="product-image">
+            <img v-bind:src="image">
+        </div>
+
+        <div class="product-info">
+            <h1>{{title}}</h1>
+            <hr></hr>
+            <a :href="link" target="_blank">href tab in vue.js</a>
+            <p v-if="inStock">In Stock</p>
+            <p v-else :class="{ outOfStock: !inStock }">Out of Stock</p>
+            <li v-for="detail in details">{{detail}}</li>
+            <hr></hr>
+
+            <div v-for="(variant, index) in variants" 
+                :key="variant.variantId"
+                class="color-box"
+                :style="{ backgroundColor: variant.variantColor }"
+                @mouseover="updateProduct(index)">
+                
+            </div>
+
+            <button v-on:click="addToCart"
+            :disabled="!inStock"
+            :class="{ disabledButton: !inStock }">
+            Add to Cart
+            </button>
+            
+            <button v-on:click="removeFromCart"
+            :disabled="!inCart"
+            :class="{ disabledButton: !inCart }"
+            >
+            Remove Item
+            </button>
+
+            <div class="cart">
+                <p>Cart({{cart}})</p>
+            </div>
+        </div> 
+    </div>
+   `,
+   data(){
+       return{
         brand: 'Computed brand',
         selectedVariant: 0, // Used for updating color image.
         product: 'Socks',
@@ -355,8 +394,9 @@ new Vue({
             }
         ],
         cart: 0
-    },
-    methods:{
+       }
+   },
+   methods:{
         onCouponApplied(){
             this.couponApplied = true;
         },
@@ -383,6 +423,21 @@ new Vue({
         },
         inCart(){
             return this.cart==0 ? false : true ;
+        }
+    }
+
+})
+
+new Vue({
+    el: '#root',
+    data: {   
+        showModal: false, // Used for communication between two components
+        showModel: false,
+        couponApplied: false,  
+    },
+    methods:{
+        onCouponApplied(){
+            this.couponApplied = true;
         }
     },
     created(){
