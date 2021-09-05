@@ -375,6 +375,18 @@ Vue.component('product',{
 
         </div> 
         <hr></hr>
+
+        <div>
+            <h2>Reviews</h2>
+            <p v-if="!reviews.length"> There are no reviews yet.</P>
+            <ul>
+                <li v-for="review in reviews">
+                <p>{{review.name}}</p>
+                <p>Rating: {{review.rating}}</p>
+                <p>{{review.review}}</p>
+                </li>
+            </ul>
+        </div>
         <product-review @review-submitted="addReview"></product-review>
         <hr></hr>
     </div>
@@ -488,7 +500,7 @@ Vue.component('product-review',{
             let productReview = {
                 name: this.name,
                 review: this.review,
-                reating: this.rating
+                rating: this.rating
             }
             this.$emit('review-submitted', productReview)
             this.name=null
